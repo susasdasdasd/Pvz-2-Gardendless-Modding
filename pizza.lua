@@ -16,9 +16,9 @@ local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/erte
 local Window = Rayfield:CreateWindow({
    Name = "Rayfield in PTR",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
-   LoadingTitle = "Rayfield Interface Suite",
-   LoadingSubtitle = "by Sirius",
-   ShowText = "Rayfield", -- for mobile users to unhide rayfield, change if you'd like
+   LoadingTitle = "Rayfield in PTR",
+   LoadingSubtitle = "by dumbcat and V3NOM",
+   ShowText = "SIGMA", -- for mobile users to unhide rayfield, change if you'd like
    Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
    ToggleUIKeybind = "K", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
@@ -385,6 +385,11 @@ local VirtualInputManager = game:GetService("VirtualInputManager")
 
 local LocalPlayer = Players.LocalPlayer
 
+local Players = game:GetService("Players")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+
+local LocalPlayer = Players.LocalPlayer
+
 -- Positions to visit
 local Positions = {
     Vector3.new(185, 3, 1017),
@@ -394,9 +399,9 @@ local Positions = {
 }
 
 -- 🔧 SETTINGS (edit these)
-local TELEPORT_DELAY = 2.5   -- ⬅️ BIGGER delay between teleports
-local KEY_DELAY = 0.15
-local LOOP_DELAY = 2
+local TELEPORT_DELAY = 0.2   -- ⬅️ changed to 0.5
+local KEY_DELAY = 0.1
+local LOOP_DELAY = 0.5
 
 -- Control variable
 local running = false
@@ -436,7 +441,7 @@ task.spawn(function()
 end)
 
 local Toggle = Tab:CreateToggle({
-    Name = "Auto Interact Loop",
+    Name = "Auto mail Loop(EXECUTE REMOVE RESETEVENTS FIRST BOI)",
     CurrentValue = false,
     Flag = "Toggle1",
 
@@ -444,9 +449,23 @@ local Toggle = Tab:CreateToggle({
         running = Value
 
         if Value then
-            warn(" Auto loop ENABLED")
+            warn("✅ Auto loop ENABLED")
         else
-            warn(" Auto loop DISABLED")
+            warn("🛑 Auto loop DISABLED")
         end
     end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "remove resetevent2",
+   Callback = function()
+   game:GetService("StarterPlayer"):WaitForChild("StarterCharacterScripts"):FindFirstChild("resetevent2"):Destroy()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "remove resetevent",
+   Callback = function()
+   game:GetService("StarterPlayer"):WaitForChild("StarterCharacterScripts"):FindFirstChild("resetevent"):Destroy()
+   end,
 })
